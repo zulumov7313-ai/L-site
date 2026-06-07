@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kumush 😊</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#0f0818;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    animation:float 10s infinite ease-in-out;
+}
+
+.circle:nth-child(1){
+    width:300px;
+    height:300px;
+    background:#8b5cf6;
+    top:-100px;
+    left:-100px;
+}
+
+.circle:nth-child(2){
+    width:250px;
+    height:250px;
+    background:#c084fc;
+    bottom:-80px;
+    right:-50px;
+}
+
+.circle:nth-child(3){
+    width:200px;
+    height:200px;
+    background:#a855f7;
+    top:50%;
+    left:60%;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-30px);
+    }
+}
+
+.card{
+    width:90%;
+    max-width:420px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:28px;
+    padding:35px 25px;
+    text-align:center;
+    z-index:2;
+    box-shadow:0 0 40px rgba(168,85,247,.25);
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+p{
+    color:#ddd;
+    line-height:1.7;
+}
+
+.btn{
+    margin-top:25px;
+    width:100%;
+    border:none;
+    cursor:pointer;
+    padding:15px;
+    border-radius:16px;
+    font-size:17px;
+    font-weight:600;
+    color:white;
+    background:linear-gradient(135deg,#a855f7,#d946ef);
+    box-shadow:0 0 25px rgba(168,85,247,.5);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+.option{
+    width:100%;
+    margin-top:12px;
+    border:none;
+    padding:15px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.option:hover{
+    background:rgba(255,255,255,0.15);
+}
+
+.hidden{
+    display:none;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:rgba(255,255,255,.08);
+    border-radius:30px;
+    margin-top:25px;
+    overflow:hidden;
+}
+
+.bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#a855f7,#d946ef);
+    transition:.3s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+</div>
+
+<div class="card" id="app">
+
+    <h1>Salom, Kumush 😊</h1>
+
+    <p>
+        Men senga kichkina qiziqarli
+        so‘rovnoma tayyorladim.
+        <br><br>
+        Tayyormisan?😊
+    </p>
+
+    <button class="btn" onclick="startQuiz()">
+        Boshlash
+    </button>
+
+</div>
+
+<script>
+
+async function sendToTelegram(text) {
+
+    const token = "8832449806:AAGtZFQCoS15I4fMQpVDRTAzWn7kxXZTh8c";
+
+    await fetch(
+        `https://api.telegram.org/bot${token}/sendMessage`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                chat_id: "440846485",
+                text: text
+            })
+        }
+    );
+}
+
+let selectedPlace = "";
+let selectedDay = "";
+
+function startQuiz(){
+
+document.getElementById("app").innerHTML=`
+<h1>Dam olish kuni qayerga borishni xohlarding?</h1>
+
+<button class="option" onclick="selectPlace('🎬 Kino')">
+🎬 Kino
+</button>
+
+<button class="option" onclick="selectPlace('🎳 Bowling')">
+🎳 Bowling
+</button>
+
+<button class="option" onclick="selectPlace('🎡 Attraksionlar bogi, park')">
+🎡 Attraksionlar bogi , Park 
+</button>
+
+<button class="option" onclick="customOption()">
+✨ O'z varianting
+</button>
+`;
+
+}
+
+function selectPlace(place){
+selectedPlace = place;
+nextStep();
+}
+
+function customOption(){
+
+document.getElementById("app").innerHTML=`
+<h1>Qanday variantni taklif qilarding? 😊</h1>
+
+<input
+id="idea"
+placeholder="Yozing..."
+style="
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+margin-top:20px;
+background:rgba(255,255,255,.1);
+color:white;
+">
+
+<button class="btn" onclick="saveCustomPlace()">
+Davom etish
+</button>
+`;
+
+}
+
+function saveCustomPlace(){
+
+selectedPlace =
+document.getElementById("idea").value;
+
+if(selectedPlace.trim() === ""){
+selectedPlace = "✨ Maxsus variant";
+}
+
+nextStep();
+
+}
+
+function nextStep(){
+
+document.getElementById("app").innerHTML=`
+<h1>Qaysi kun qulay?</h1>
+
+<button class="option" onclick="selectDay('📅 Shanba')">
+📅 Shanba
+</button>
+
+<button class="option" onclick="selectDay('📅 Yakshanba')">
+📅 Yakshanba
+</button>
+`;
+
+}
+
+function selectDay(day){
+    selectedDay = day;
+    loadingPage();
+}
+
+function loadingPage(){
+
+document.getElementById("app").innerHTML=`
+<h1>Natijalar tahlil qilinmoqda...</h1>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+`;
+
+let width = 0;
+
+let timer = setInterval(() => {
+
+width += 5;
+
+document.getElementById("bar").style.width =
+width + "%";
+
+if(width >= 100){
+
+clearInterval(timer);
+
+showResult();
+
+}
+
+},100);
+
+}
+
+function showResult(){
+
+document.getElementById("app").innerHTML=`
+<h1>Tahlil yakunlandi ✅</h1>
+
+<p>
+
+Kumush,
+
+<br><br>
+
+Siz tanlagan variant:
+
+<br><br>
+
+<h2>${selectedPlace}</h2>
+
+<br>
+
+Bu juda yaxshi tanlov 😊
+
+<br><br>
+
+Menga hamroh bo'lasanmi? 😊
+
+</p>
+
+<button class="btn"
+onclick="yesAnswer()">
+😊 Ha
+</button>
+
+<button class="option"
+id="noBtn">
+😄 Yo'q
+</button>
+`;
+
+const btn =
+document.getElementById("noBtn");
+
+btn.addEventListener("mouseover",()=>{
+
+btn.style.position="absolute";
+
+btn.style.left=
+Math.random()*120+"px";
+
+btn.style.top=
+Math.random()*200+"px";
+
+});
+
+}
+
+function yesAnswer() {
+
+sendToTelegram(`💜 Новый ответ!
+
+📍 Место: ${selectedPlace}
+📅 День: ${selectedDay}`);
+
+document.getElementById("app").innerHTML = ` 
+<h1>Ajoyib! 😊</h1>
+
+<p>
+Javobing meni xursand qildi.
+
+<br><br>
+
+Endi menga Telegramda yoz
+yoki ovozli xabar yubor 😊
+
+<br><br>
+
+Qolganini birga kelishib olamiz ✨
+</p>
+
+<a href="https://t.me/LAZIZ_05_30" target="_blank">
+<button class="btn">
+📩 Telegramga o'tish
+</button>
+</a>
+`;
+
+}
+
+</script>
+
+</body>
+</html>
+
