@@ -1,419 +1,498 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
+<!DOCTYPE html>                                                                                                                                                                                
+<html lang="ru">                                                                                                                                                                               
+<head>                                                                                                                                                                                         
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kumush 😊</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>✨</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    min-height:100vh;
-    background:#0f0818;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
+background:linear-gradient(180deg,#0f172a,#1e293b);
+color:white;
+overflow:hidden;
+height:100vh;
 }
 
-.bg{
-    position:fixed;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
-
-.circle{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(80px);
-    animation:float 10s infinite ease-in-out;
-}
-
-.circle:nth-child(1){
-    width:300px;
-    height:300px;
-    background:#8b5cf6;
-    top:-100px;
-    left:-100px;
-}
-
-.circle:nth-child(2){
-    width:250px;
-    height:250px;
-    background:#c084fc;
-    bottom:-80px;
-    right:-50px;
-}
-
-.circle:nth-child(3){
-    width:200px;
-    height:200px;
-    background:#a855f7;
-    top:50%;
-    left:60%;
-}
-
-@keyframes float{
-    50%{
-        transform:translateY(-30px);
-    }
-}
-
-.card{
-    width:90%;
-    max-width:420px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,0.12);
-    border-radius:28px;
-    padding:35px 25px;
-    text-align:center;
-    z-index:2;
-    box-shadow:0 0 40px rgba(168,85,247,.25);
-    animation:fadeIn .5s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-h1{
-    font-size:28px;
-    margin-bottom:15px;
-}
-
-p{
-    color:#ddd;
-    line-height:1.7;
-}
-
-.btn{
-    margin-top:25px;
-    width:100%;
-    border:none;
-    cursor:pointer;
-    padding:15px;
-    border-radius:16px;
-    font-size:17px;
-    font-weight:600;
-    color:white;
-    background:linear-gradient(135deg,#a855f7,#d946ef);
-    box-shadow:0 0 25px rgba(168,85,247,.5);
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:scale(1.03);
-}
-
-.option{
-    width:100%;
-    margin-top:12px;
-    border:none;
-    padding:15px;
-    border-radius:16px;
-    background:rgba(255,255,255,0.08);
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-    transition:.3s;
-}
-
-.option:hover{
-    background:rgba(255,255,255,0.15);
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+opacity:1;
+transform:scale(1);
+transition:.5s;
 }
 
 .hidden{
-    display:none;
+opacity:0;
+pointer-events:none;
+transform:scale(.95);
 }
 
-.progress{
-    width:100%;
-    height:10px;
-    background:rgba(255,255,255,.08);
-    border-radius:30px;
-    margin-top:25px;
-    overflow:hidden;
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:25px;
+max-width:650px;
+width:90%;
+box-shadow:0 0 25px rgba(255,255,255,.1);
 }
 
-.bar{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#a855f7,#d946ef);
-    transition:.3s;
+h1{
+font-size:2rem;
+line-height:1.5;
+margin-bottom:25px;
 }
+
+p{
+font-size:1.1rem;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+button{
+padding:14px 25px;
+margin:8px;
+border:none;
+border-radius:15px;
+font-size:16px;
+cursor:pointer;
+background:white;
+color:#0f172a;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.option{
+width:240px;
+}
+
+input[type="date"]{
+padding:12px;
+border:none;
+border-radius:12px;
+font-size:16px;
+margin:15px 0;
+}
+
+.places{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:15px;
+}
+
+.place-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+border-radius:20px;
+padding:20px;
+cursor:pointer;
+transition:.3s;
+}
+
+.place-card:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,.15);
+}
+
+.emoji{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:fall linear infinite;
+opacity:.8;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-100vh);
+}
+to{
+transform:translateY(100vh);
+}
+}
+
+#result{
+font-size:22px;
+line-height:2;
+}
+#success{
+font-size:90px;
+color:#4ade80;
+margin-bottom:20px;
+animation:pop .7s ease;
+}
+
+@keyframes pop{
+
+0%{
+transform:scale(0);
+opacity:0;
+}
+
+70%{
+transform:scale(1.2);
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="bg">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
+<div id="screen1" class="screen">
+<div class="card">
+
+<h1 id="intro"></h1>
+
+<button onclick="nextScreen('screen1','screen2')">
+Продолжить ✨
+</button>
+
+</div>
 </div>
 
-<div class="card" id="app">
+<div id="screen2" class="screen hidden">
+<div class="card">
 
-    <h1>Salom, Kumush 😊</h1>
+<h1>Поэтому у меня есть один вопрос.</h1>
 
-    <p>
-        Men senga kichkina qiziqarli
-        so‘rovnoma tayyorladim.
-        <br><br>
-        Tayyormisan?😊
-    </p>
+<button onclick="nextScreen('screen2','screen3')">
+Узнать →
+</button>
 
-    <button class="btn" onclick="startQuiz()">
-        Boshlash
-    </button>
+</div>
+</div>
 
+<div id="screen3" class="screen hidden">
+<div class="card">
+
+<h1>Как насчёт встретиться на выходных?</h1>
+
+<p>Просто хорошо провести время.</p>
+
+<button onclick="nextScreen('screen3','screen4')">
+✅ Звучит хорошо
+</button>
+
+<button onclick="nextScreen('screen3','screenThink')">
+🤔 Подумаю
+</button>
+
+</div>
+</div>
+
+<div id="screenThink" class="screen hidden">
+<div class="card">
+
+<h1>Ничего страшного 😊</h1>
+
+<p>Иногда хорошим идеям нужно немного времени.</p>
+
+<button onclick="nextScreen('screenThink','screen3')">
+Назад
+</button>
+
+</div>
+</div>
+
+<div id="screen4" class="screen hidden">
+<div class="card">
+
+<h1>Выбери день 📅</h1>
+
+<button class="option"
+onclick="chooseDay('Суббота')">
+Суббота
+</button>
+
+<button class="option"
+onclick="chooseDay('Воскресенье')">
+Воскресенье
+</button>
+
+<br>
+
+<input type="date" id="dateInput">
+
+<br>
+
+<button onclick="customDate()">
+Выбрать другую дату
+</button>
+
+</div>
+</div>
+
+<div id="screen5" class="screen hidden">
+<div class="card">
+
+<h1>Что тебе больше нравится?</h1>
+
+<div class="places">
+
+<div class="place-card"
+onclick="finish('🎬 Кино')">
+
+<div class="emoji">🎬</div>
+
+Кино
+
+</div>
+
+<div class="place-card"
+onclick="finish('☕ Кафе')">
+
+<div class="emoji">☕</div>
+
+Кафе
+
+</div>
+
+<div class="place-card"
+onclick="finish('🌳 Прогулка')">
+
+<div class="emoji">🌳</div>
+
+Прогулка
+
+</div>
+
+<div class="place-card"
+onclick="finish('🍕 Что-нибудь вкусное')">
+
+<div class="emoji">🍕</div>
+
+Поесть
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div id="screen6" class="screen hidden">
+<div class="card">
+
+<div id="success">
+✓
+</div>
+
+<h1>Отлично ✨</h1>
+
+<div id="result"></div>
+
+<br>
+
+<p>
+Тогда договорились ✨
+</p>
+
+</div>
 </div>
 
 <script>
 
-async function sendToTelegram(text) {
-
-    const token = "8832449806:AAGtZFQCoS15I4fMQpVDRTAzWn7kxXZTh8c";
-
-    await fetch(
-        `https://api.telegram.org/bot${token}/sendMessage`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                chat_id: "440846485",
-                text: text
-            })
-        }
-    );
-}
-
-let selectedPlace = "";
 let selectedDay = "";
 
-function startQuiz(){
+function nextScreen(hide,show){
 
-document.getElementById("app").innerHTML=`
-<h1>Dam olish kuni qayerga borishni xohlarding?</h1>
+document
+.getElementById(hide)
+.classList.add("hidden");
 
-<button class="option" onclick="selectPlace('🎬 Kino')">
-🎬 Kino
-</button>
-
-<button class="option" onclick="selectPlace('🎳 Bowling')">
-🎳 Bowling
-</button>
-
-<button class="option" onclick="selectPlace('🎡 Attraksionlar bogi, park')">
-🎡 Attraksionlar bogi , Park 
-</button>
-
-<button class="option" onclick="customOption()">
-✨ O'z varianting
-</button>
-`;
+document
+.getElementById(show)
+.classList.remove("hidden");
 
 }
 
-function selectPlace(place){
-selectedPlace = place;
-nextStep();
-}
+function chooseDay(day){
 
-function customOption(){
+selectedDay = day;
 
-document.getElementById("app").innerHTML=`
-<h1>Qanday variantni taklif qilarding? 😊</h1>
-
-<input
-id="idea"
-placeholder="Yozing..."
-style="
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-margin-top:20px;
-background:rgba(255,255,255,.1);
-color:white;
-">
-
-<button class="btn" onclick="saveCustomPlace()">
-Davom etish
-</button>
-`;
+nextScreen(
+"screen4",
+"screen5"
+);
 
 }
 
-function saveCustomPlace(){
+function customDate(){
 
-selectedPlace =
-document.getElementById("idea").value;
+const date =
+document.getElementById(
+"dateInput"
+).value;
 
-if(selectedPlace.trim() === ""){
-selectedPlace = "✨ Maxsus variant";
-}
+if(date===""){
 
-nextStep();
+alert(
+"Сначала выбери дату"
+);
 
-}
-
-function nextStep(){
-
-document.getElementById("app").innerHTML=`
-<h1>Qaysi kun qulay?</h1>
-
-<button class="option" onclick="selectDay('📅 Shanba')">
-📅 Shanba
-</button>
-
-<button class="option" onclick="selectDay('📅 Yakshanba')">
-📅 Yakshanba
-</button>
-`;
+return;
 
 }
 
-function selectDay(day){
-    selectedDay = day;
-    loadingPage();
+const d =
+new Date(date);
+
+selectedDay =
+d.toLocaleDateString(
+"ru-RU",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
 }
+);
 
-function loadingPage(){
-
-document.getElementById("app").innerHTML=`
-<h1>Natijalar tahlil qilinmoqda...</h1>
-
-<div class="progress">
-<div class="bar" id="bar"></div>
-</div>
-`;
-
-let width = 0;
-
-let timer = setInterval(() => {
-
-width += 5;
-
-document.getElementById("bar").style.width =
-width + "%";
-
-if(width >= 100){
-
-clearInterval(timer);
-
-showResult();
+nextScreen(
+"screen4",
+"screen5"
+);
 
 }
 
-},100);
+function finish(place){
+
+fetch(
+"https://api.telegram.org/bot8832449806:AAGtZFQCoS15I4fMQpVDRTAzWn7kxXZTh8c/sendMessage",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id:"440846485",
+text:
+"💌 Новый ответ\n\n📅 " +
+selectedDay +
+"\n📍 " +
+place
+})
+}
+);
+
+document
+.getElementById(
+"result"
+)
+.innerHTML =
+"📅 " +
+selectedDay +
+"<br><br>" +
+place;
+
+nextScreen(
+"screen5",
+"screen6"
+);
 
 }
 
-function showResult(){
+function typeWriter(
+element,
+text,
+speed=40
+){
 
-document.getElementById("app").innerHTML=`
-<h1>Tahlil yakunlandi ✅</h1>
+element.innerHTML="";
 
-<p>
+let i=0;
 
-Kumush,
+function typing(){
 
-<br><br>
+if(i<text.length){
 
-Siz tanlagan variant:
+element.innerHTML +=
+text.charAt(i);
 
-<br><br>
+i++;
 
-<h2>${selectedPlace}</h2>
-
-<br>
-
-Bu juda yaxshi tanlov 😊
-
-<br><br>
-
-Menga hamroh bo'lasanmi? 😊
-
-</p>
-
-<button class="btn"
-onclick="yesAnswer()">
-😊 Ha
-</button>
-
-<button class="option"
-id="noBtn">
-😄 Yo'q
-</button>
-`;
-
-const btn =
-document.getElementById("noBtn");
-
-btn.addEventListener("mouseover",()=>{
-
-btn.style.position="absolute";
-
-btn.style.left=
-Math.random()*120+"px";
-
-btn.style.top=
-Math.random()*200+"px";
-
-});
+setTimeout(
+typing,
+speed
+);
 
 }
 
-function yesAnswer() {
+}
 
-sendToTelegram(`💜 Новый ответ!
+typing();
 
-📍 Место: ${selectedPlace}
-📅 День: ${selectedDay}`);
+}
 
-document.getElementById("app").innerHTML = ` 
-<h1>Ajoyib! 😊</h1>
+typeWriter(
 
-<p>
-Javobing meni xursand qildi.
+document.getElementById(
+"intro"
+),
 
-<br><br>
+"Иногда самые интересные истории начинаются с одного вопроса."
 
-Endi menga Telegramda yoz
-yoki ovozli xabar yubor 😊
+);
 
-<br><br>
+for(let i=0;i<120;i++){
 
-Qolganini birga kelishib olamiz ✨
-</p>
+let star =
+document.createElement(
+"div"
+);
 
-<a href="https://t.me/LAZIZ_05_30" target="_blank">
-<button class="btn">
-📩 Telegramga o'tish
-</button>
-</a>
-`;
+star.className =
+"star";
+
+let size =
+Math.random()*3+1;
+
+star.style.width =
+size+"px";
+
+star.style.height =
+size+"px";
+
+star.style.left =
+Math.random()*100+"vw";
+
+star.style.animationDuration =
+(
+Math.random()*10+10
+)+"s";
+
+document.body
+.appendChild(star);
 
 }
 
@@ -421,4 +500,511 @@ Qolganini birga kelishib olamiz ✨
 
 </body>
 </html>
+laziz3105@kali:~$ 
+laziz3105@kali:~$ wc -l index.html 
+502 index.html
+laziz3105@kali:~$ ls -lh ~/index.html 
+-rw-rw-r-- 1 laziz3105 laziz3105 6,2K июн 20 23:36 /home/laziz3105/index.html
+laziz3105@kali:~$ cat ~/index.html 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨</title>
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(180deg,#0f172a,#1e293b);
+color:white;
+overflow:hidden;
+height:100vh;
+}
+
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+opacity:1;
+transform:scale(1);
+transition:.5s;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(.95);
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:25px;
+max-width:650px;
+width:90%;
+box-shadow:0 0 25px rgba(255,255,255,.1);
+}
+
+h1{
+font-size:2rem;
+line-height:1.5;
+margin-bottom:25px;
+}
+
+p{
+font-size:1.1rem;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+button{
+padding:14px 25px;
+margin:8px;
+border:none;
+border-radius:15px;
+font-size:16px;
+cursor:pointer;
+background:white;
+color:#0f172a;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.option{
+width:240px;
+}
+
+input[type="date"]{
+padding:12px;
+border:none;
+border-radius:12px;
+font-size:16px;
+margin:15px 0;
+}
+
+.places{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:15px;
+}
+
+.place-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+border-radius:20px;
+padding:20px;
+cursor:pointer;
+transition:.3s;
+}
+
+.place-card:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,.15);
+}
+
+.emoji{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:fall linear infinite;
+opacity:.8;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-100vh);
+}
+to{
+transform:translateY(100vh);
+}
+}
+
+#result{
+font-size:22px;
+line-height:2;
+}
+#success{
+font-size:90px;
+color:#4ade80;
+margin-bottom:20px;
+animation:pop .7s ease;
+}
+
+@keyframes pop{
+
+0%{
+transform:scale(0);
+opacity:0;
+}
+
+70%{
+transform:scale(1.2);
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="screen1" class="screen">
+<div class="card">
+
+<h1 id="intro"></h1>
+
+<button onclick="nextScreen('screen1','screen2')">
+Продолжить ✨
+</button>
+
+</div>
+</div>
+
+<div id="screen2" class="screen hidden">
+<div class="card">
+
+<h1>Поэтому у меня есть один вопрос.</h1>
+
+<button onclick="nextScreen('screen2','screen3')">
+Узнать →
+</button>
+
+</div>
+</div>
+
+<div id="screen3" class="screen hidden">
+<div class="card">
+
+<h1>Как насчёт встретиться на выходных?</h1>
+
+<p>Просто хорошо провести время.</p>
+
+<button onclick="nextScreen('screen3','screen4')">
+✅ Звучит хорошо
+</button>
+
+<button onclick="nextScreen('screen3','screenThink')">
+🤔 Подумаю
+</button>
+
+</div>
+</div>
+
+<div id="screenThink" class="screen hidden">
+<div class="card">
+
+<h1>Ничего страшного 😊</h1>
+
+<p>Иногда хорошим идеям нужно немного времени.</p>
+
+<button onclick="nextScreen('screenThink','screen3')">
+Назад
+</button>
+
+</div>
+</div>
+
+<div id="screen4" class="screen hidden">
+<div class="card">
+
+<h1>Выбери день 📅</h1>
+
+<button class="option"
+onclick="chooseDay('Суббота')">
+Суббота
+</button>
+
+<button class="option"
+onclick="chooseDay('Воскресенье')">
+Воскресенье
+</button>
+
+<br>
+
+<input type="date" id="dateInput">
+
+<br>
+
+<button onclick="customDate()">
+Выбрать другую дату
+</button>
+
+</div>
+</div>
+
+<div id="screen5" class="screen hidden">
+<div class="card">
+
+<h1>Что тебе больше нравится?</h1>
+
+<div class="places">
+
+<div class="place-card"
+onclick="finish('🎬 Кино')">
+
+<div class="emoji">🎬</div>
+
+Кино
+
+</div>
+
+<div class="place-card"
+onclick="finish('☕ Кафе')">
+
+<div class="emoji">☕</div>
+
+Кафе
+
+</div>
+
+<div class="place-card"
+onclick="finish('🌳 Прогулка')">
+
+<div class="emoji">🌳</div>
+
+Прогулка
+
+</div>
+
+<div class="place-card"
+onclick="finish('🍕 Что-нибудь вкусное')">
+
+<div class="emoji">🍕</div>
+
+Поесть
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div id="screen6" class="screen hidden">
+<div class="card">
+
+<div id="success">
+✓
+</div>
+
+<h1>Отлично ✨</h1>
+
+<div id="result"></div>
+
+<br>
+
+<p>
+Тогда договорились ✨
+</p>
+
+</div>
+</div>
+
+<script>
+
+let selectedDay = "";
+
+function nextScreen(hide,show){
+
+document
+.getElementById(hide)
+.classList.add("hidden");
+
+document
+.getElementById(show)
+.classList.remove("hidden");
+
+}
+
+function chooseDay(day){
+
+selectedDay = day;
+
+nextScreen(
+"screen4",
+"screen5"
+);
+
+}
+
+function customDate(){
+
+const date =
+document.getElementById(
+"dateInput"
+).value;
+
+if(date===""){
+
+alert(
+"Сначала выбери дату"
+);
+
+return;
+
+}
+
+const d =
+new Date(date);
+
+selectedDay =
+d.toLocaleDateString(
+"ru-RU",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
+
+nextScreen(
+"screen4",
+"screen5"
+);
+
+}
+
+function finish(place){
+
+fetch(
+"https://api.telegram.org/bot8832449806:AAGtZFQCoS15I4fMQpVDRTAzWn7kxXZTh8c/sendMessage",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id:"440846485",
+text:
+"💌 Новый ответ\n\n📅 " +
+selectedDay +
+"\n📍 " +
+place
+})
+}
+);
+
+document
+.getElementById(
+"result"
+)
+.innerHTML =
+"📅 " +
+selectedDay +
+"<br><br>" +
+place;
+
+nextScreen(
+"screen5",
+"screen6"
+);
+
+}
+
+function typeWriter(
+element,
+text,
+speed=40
+){
+
+element.innerHTML="";
+
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+element.innerHTML +=
+text.charAt(i);
+
+i++;
+
+setTimeout(
+typing,
+speed
+);
+
+}
+
+}
+
+typing();
+
+}
+
+typeWriter(
+
+document.getElementById(
+"intro"
+),
+
+"Иногда самые интересные истории начинаются с одного вопроса."
+
+);
+
+for(let i=0;i<120;i++){
+
+let star =
+document.createElement(
+"div"
+);
+
+star.className =
+"star";
+
+let size =
+Math.random()*3+1;
+
+star.style.width =
+size+"px";
+
+star.style.height =
+size+"px";
+
+star.style.left =
+Math.random()*100+"vw";
+
+star.style.animationDuration =
+(
+Math.random()*10+10
+)+"s";
+
+document.body
+.appendChild(star);
+
+}
+
+</script>
+
+</body>
+</html>
